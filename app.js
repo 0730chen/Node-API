@@ -25,7 +25,12 @@ let router = new Router();
 router.get("/", async ctx => {
   let url = "https://www.zhihu.com/";
   let srcTitle = await getData(url); //获得html文本
+
+  //获取url
   let indexResult = await DataAnalysis(srcTitle);
+  ctx.body = indexResult
+  ctx.response.type = 'text'
+  //indexResult是一个数组
   ctx.body = await getData2(indexResult)
 
   //解析首页html文本
@@ -79,7 +84,7 @@ let DataAnalysis = function(data) {
       title: []
     };
     const $ = cheerio.load(data);
-    let a = $(".ContentItem-title a").each((i, e) => {
+    let a = $(".ContentItem-title").children().find('a').each((i, e) => {
       let srcAdd = `https://www.zhihu.com` + e.attribs.href.slice(0, 19); //获取所有问题下所有回答的的网址,过滤链接
       question.src.push(srcAdd);
       question.title.push(e.children[0].data);
@@ -96,16 +101,20 @@ let htmlAnalysis = function(html) {
   return new Promise((resolve, reject) => {
     let wrap = []; //数组
     let $ = cheerio.load(html);
+    let question = $('.QuestionHeader').text()
+    let questionCotent = $('.RichText ztext CopyrightRichText-richTex').text()
     let author = $(".UserLink-link").text(); //作者名字
     let status = $(".ztext AuthorInfo-badgeText").text(); //状态
     let htmlData = $(".RichContent-inner").text(); //文章内容
-
     let wrapContent = {
       author: author,
       status: status,
-      comments: htmlData
+      comments: htmlData,
+      question:question,
+      questionCotent:questionCotent,
     };
     wrap.push(wrapContent);
+    console.log(wrap)
 
     resolve(wrap);
   });
