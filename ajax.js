@@ -8,25 +8,38 @@ const cheerio = require("cheerio");
 let router = new Router();
 
 router.get("/", async ctx => {
+  let params = {
+    session_token: "1d21a48fae24f574fa79e64d8893eb29", //1d21a48fae24f574fa79e64d8893eb29
+    desktop: true,
+    page_number: 5,
+    limit: 10,
+    action: "down",
+    after_id: 11
+  };
   //https://www.zhihu.com/api/v3/feed/topstory/recommend?session_token=b2aed9c19be2b2c2896191451e924d10&desktop=true&page_number=3&limit=6&action=down&after_id=11
-  let response = await getData();
-  ctx.body = response
+  let url =
+    `https://www.zhihu.com/api/v3/feed/topstory/recommend?` +
+    `session_token=${params.session_token}` +
+    `desktop=${params.desktop}` +
+    `page_number=${params.page_number}` +
+    `limit=${params.limit}` +
+    `action=${params.action}` +
+    `after_id=${params.after_id}`;
+  for (let i = 0; i < 5; i++) {
+    //0.1.2.3.4
+    params.page_number += i;
+    console.log(params.page_number);
+    console.log(params);
+    let response = await getData(url);
+    ctx.body = response;
+  }
+  // let response = await getData(url); //获取到问题的id
 });
 
+//获得所有的问题
+//1.使用数组储存对象每次push都要是一个新对象，不能是一个对象
 let getData = function(ulr) {
   return new Promise((resolve, reject) => {
-	  let obj = {
-
-	  }
-    url = "https://www.zhihu.com/api/v3/feed/topstory/recommend?";
-    let params = {
-      session_token: "9a0cadd12c7413b0261ca899055d00eb",
-      desktop: true,
-      page_number: 3,
-      limit: 6,
-      action: "down",
-      after_id: 11
-    };
     superagent
       .get(url)
       .set({
@@ -41,18 +54,32 @@ let getData = function(ulr) {
         if (err) {
           console.log("请求出错了");
         } else {
-          console.log(typeof res.text);
-        //   console.log(res.text);
-          if(typeof res.text !=='undefined'){
-			  let result = JSON.parse(res.text)
-			  let dataArray = result.data
-			  dataArray.forEach((e,i) => {
-				  console.log(e.target.id,i)
-			  });
-		  }
-
+          //   console.log(res.text);
+          if (typeof res.text !== "undefined") {
+            let result = JSON.parse(res.text);
+            let dataArray = result.data;
+            let obj = [];
+            dataArray.forEach((e, i) => {
+              let questionAll = {}; //定义的对象放在foreach中
+              // console.log(i,e.target.question)
+              if (e.target.question) {
+                console.log(e.target.question.id);
+                questionAll.id = e.target.question.id;
+                questionAll.title = e.target.question.title;
+                questionAll.answer_count = e.target.question.answer_count;
+                // console.log(questionAll)
+                // obj.push(questionAll);
+                // console.log(obj)
+                obj.push(questionAll);
+              }
+            });
+            // console.log(questionAll)
+            resolve(obj);
+          }
+          // console.log(obj);
         }
       });
+    // resolve(obj)
   });
 };
 
