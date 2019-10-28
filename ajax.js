@@ -106,6 +106,7 @@ let accessAllHtml = function(arr){
 
     //成功根据所有id获取对应的网页内容
     //接下来使用cheerio对网页内容进行分析，获取所有问题下的回答
+    //
     superagent.get(url+`${e.id}`).set({
       Connection: "keep-alive",
       "User-Agent":
@@ -117,13 +118,26 @@ let accessAllHtml = function(arr){
       if(err){
         console.log(err)
       }else{
-        console.log(res)
+        AnalysisHtml(res)
       }
     })
 
    })
   })
 })
+}
+//定义一个分析所有问题的页面返回想要的内容， 作者，标题，时间，点赞数
+let AnalysisHtml = function(html){
+  return new Promise((resolve,reject)=>{
+      const $ = cheerio.load(html);
+      //每一个回答的问题
+      let questionAnswer = $('.List-item')
+      let questionTitle = $('.QuestionHeader-title')
+      //答案里的内容
+      let answerContainer = $('.RichContent-inner')
+      console.log(questionTitle)
+    //  console.log(questionAnswer)
+  })
 }
 
 app.use(router.routes());
