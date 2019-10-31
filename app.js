@@ -28,10 +28,11 @@ router.get("/", async ctx => {
 
   //获取url
   let indexResult = await DataAnalysis(srcTitle);
+  console.log(indexResult)
   ctx.body = indexResult
-  ctx.response.type = 'text'
-  //indexResult是一个数组
-  ctx.body = await getData2(indexResult)
+  // ctx.response.type = 'text'
+  // //indexResult是一个数组
+  // ctx.body = await getData2(indexResult)
 
   //解析首页html文本
   //   let warp = htmlAnalysis(result.src)
