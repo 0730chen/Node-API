@@ -3,7 +3,7 @@ let canvas = document.querySelector("#mycanvas");
 let ctx = canvas.getContext("2d");
 let dianchi2 = [1, 2, 3, 4, 5];
 let dataAll = [];
-for (let i = 0; i < 83; i++) {
+for (let i = 0; i < 84; i++) {
   dataAll.push(i);
 }
 data1 = [

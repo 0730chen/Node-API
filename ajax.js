@@ -1,13 +1,101 @@
 let koa = require("koa");
-
+let querystring = require("querystring");
+let fs = require("fs");
 let app = new koa();
-
 const Router = require("koa-router");
 const superagent = require("superagent");
 const cheerio = require("cheerio");
+const bodyparser = require("koa-bodyparser");
 let router = new Router();
+app.use(bodyparser());
 
-router.get("/", async ctx => {
+//koa的事件监听是异步函数
+router.post("/weather", async ctx => {
+  //异步定义解析函数
+  function parsePostData(ctx) {
+    return new Promise((resolve, reject) => {
+      try {
+        let postdata = "";
+        ctx.req.addListener("data", data => {
+          postdata += data;
+        });
+        ctx.req.addListener("end", function() {
+          let parseData = parseQueryStr(postdata);
+          resolve(parseData);
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  function parseQueryStr(queryStr) {
+    let queryData = {};
+    let queryStrList = queryStr.split("&");
+    console.log(queryStrList);
+    for (let [index, queryStr] of queryStrList.entries()) {
+      let itemList = queryStr.split("=");
+      queryData[itemList[0]] = decodeURIComponent(itemList[1]);
+    }
+    return queryData;
+  }
+
+  let data = "";
+  let result = "";
+  let cityId = "123";
+  ctx.status = 200;
+  ctx.set("Content-type", "text/plain;charset=utf-8");
+  if (ctx.req.method === "POST") {
+    // ctx.req.addListener("data", chunk => {
+    //   data += chunk;
+    // });
+    // let a = ctx.req.addListener("end", () => {
+    //   let parseData = querystring.parse(data);
+    //   result = parseData;
+    //   let Allcity = fs.readFileSync("./city.json").toString();
+    //   let AllcityChage = JSON.parse(Allcity);
+    //   console.log(Object.keys(parseData)[0]); //取到传递过来的城市名  JSON.Stringify是序列化 JSON.parse是反序列化
+    //   let city = Object.keys(parseData)[0];
+    //   console.log(city);
+    //   cityId = AllcityChage.reduce((item, e) => {
+    //     // console.log(e["中文名"] === city)
+    //     // console.log(typeof city)
+    //     // console.log(city)
+    //     if (e["中文名"] === city) {
+    //       console.log("找到匹配的城市");
+    //       item = e["adcode"];
+    //     }
+    //     return item;
+    //   }, "");
+    //   console.log(`我是end里面的数据`, cityId);
+    // });
+    // ctx.body = cityId;
+    let data = ctx.request.body;
+    let city = Object.keys(data)[0];
+    let Allcity = fs.readFileSync("./city.json").toString();
+    let AllcityChage = JSON.parse(Allcity);
+    cityId = AllcityChage.reduce((item, e) => {
+      // console.log(e["中文名"] === city)
+      // console.log(typeof city)
+      // console.log(city)
+      if (e["中文名"] === city) {
+        console.log("找到匹配的城市");
+        item = e["adcode"];
+      } else {
+      }
+      return item;
+    }, "");
+    if (cityId) {
+      ctx.body = cityId;
+    } else {
+      ctx.body = 'error'
+    }
+
+    
+  }
+});
+//知乎API可以返回多个文章页面
+router.get("/zhihu", async ctx => {
   let params = {
     session_token: "1d21a48fae24f574fa79e64d8893eb29", //1d21a48fae24f574fa79e64d8893eb29
     desktop: true,
@@ -173,5 +261,5 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 app.listen("8000", () => {
-  console.log("监听3000端口");
+  console.log("监听8000端口");
 });
