@@ -43,7 +43,7 @@ router.post("/weather", async ctx => {
         ctx.req.addListener("data", data => {
           postdata += data;
         });
-        ctx.req.addListener("end", function() {
+        ctx.req.addListener("end", function () {
           let parseData = parseQueryStr(postdata);
           resolve(parseData);
         });
@@ -156,7 +156,7 @@ router.get("/zhihu", async ctx => {
 
 //获得所有的问题
 //1.使用数组储存对象每次push都要是一个新对象，不能是一个对象
-let getData = function(url) {
+let getData = function (url) {
   return new Promise((resolve, reject) => {
     superagent
       .get(url)
@@ -199,7 +199,7 @@ let getData = function(url) {
 
 //接受一个存储所有问题id的数组
 //获得id后要异步访问所有页面
-let accessAllHtml = async function(arr) {
+let accessAllHtml = async function (arr) {
   return new Promise(async (resolve, reject) => {
     //这个是查找大V的接口
     //搜索热点/search/top_search/tabs/hot/items
@@ -244,7 +244,7 @@ let accessAllHtml = async function(arr) {
   });
 };
 //传入的是一个html标签 返回的是一个对象 一个分析所有问题的页面返回想要的内容， 作者，标题，时间，点赞数
-let AnalysisHtml = async function(html) {
+let AnalysisHtml = async function (html) {
   return new Promise((resolve, reject) => {
     let result = {
       author: "",
@@ -310,12 +310,22 @@ router.get("/hot", async ctx => {
   let HotRank = container.find('.HotItem-rank').text()
   let HotExcept = container.find('.HotItem-excerpt').text()
   let HotZiZi = container.find('.HotItem-metrics').text()
-  
+
 
   //寻找网页链接
   //需要使用一个循环才能获取到这个热榜链接
-  let HotLink = container.find('.HotItem-content').next()[0].attribs['href']
-  console.log(HotLink)
+  //获得了页面的链接
+  let HotLink
+  for (let i = 0; i < 48; i++) {
+    //try catch捕获错误
+    try {
+      HotLink = container.find('.HotItem-content').next()[i].attribs['href']
+    } catch (error) {
+      HotLink = '没有属性'
+    }
+
+    console.log(HotLink)
+  }
   //1.需要标题  热度 顺序 一个网址链接 一个图片链接 存在没有图片的情况
 });
 
