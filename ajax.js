@@ -403,16 +403,23 @@ router.get("/github", async ctx => {
     "content-type": "application/json"
   });
   let html = data.text;
+  let allArray = []
   let $ = cheerio.load(html);
   let $box = $(".Box");
   for (let i = 0; i < 21; i++) {
     //h1标签中隐藏着项目内容和链接
     //获得了热门项目的链接 需要拼接 https://github.com/
+    let baseUrl = `https://github.com/`
     let href = $box.find('.Box-row')[i]["children"][2]["next"]["children"][1]["attribs"]["href"]
     let title = $box.find('.Box-row')[0]["children"][2]["next"]["children"][1]["children"][2]["next"]["children"][0]["data"]
-    let title2 = $box.find('.Box-row').find('a')[0]["children"][0]
-    console.log(title2)
+    let title2 = $box.find('.Box-row').find('.text-normal')[i]["next"]["data"]
+    //获得了全部的标题和链接
+    let url = baseUrl+href
+    let Title = title+title2
+    allArray.push({"link":url,"title":Title})
   }
+  console.log(allArray)
+  ctx.body = allArray
 });
 
 app.use(router.routes());
