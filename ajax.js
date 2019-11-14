@@ -43,7 +43,7 @@ router.post("/weather", async ctx => {
         ctx.req.addListener("data", data => {
           postdata += data;
         });
-        ctx.req.addListener("end", function () {
+        ctx.req.addListener("end", function() {
           let parseData = parseQueryStr(postdata);
           resolve(parseData);
         });
@@ -156,7 +156,7 @@ router.get("/zhihu", async ctx => {
 
 //获得所有的问题
 //1.使用数组储存对象每次push都要是一个新对象，不能是一个对象
-let getData = function (url) {
+let getData = function(url) {
   return new Promise((resolve, reject) => {
     superagent
       .get(url)
@@ -199,7 +199,7 @@ let getData = function (url) {
 
 //接受一个存储所有问题id的数组
 //获得id后要异步访问所有页面
-let accessAllHtml = async function (arr) {
+let accessAllHtml = async function(arr) {
   return new Promise(async (resolve, reject) => {
     //这个是查找大V的接口
     //搜索热点/search/top_search/tabs/hot/items
@@ -244,7 +244,7 @@ let accessAllHtml = async function (arr) {
   });
 };
 //传入的是一个html标签 返回的是一个对象 一个分析所有问题的页面返回想要的内容， 作者，标题，时间，点赞数
-let AnalysisHtml = async function (html) {
+let AnalysisHtml = async function(html) {
   return new Promise((resolve, reject) => {
     let result = {
       author: "",
@@ -282,7 +282,7 @@ let AnalysisHtml = async function (html) {
   });
 };
 
-//抓取热点消息
+//抓取这个是知乎的热点APi热点消息
 router.get("/hot", async ctx => {
   //  let url ="https://api.zhihu.com/"+`moments?feed_type=all&limit=10&reverse_order=0&start_type=warm`
   // url = `https://movie.douban.com/explore#!type=movie&tag=%E7%83%AD%E9%97%A8&sort=recommend&page_limit=20&page_start=20`;
@@ -306,27 +306,113 @@ router.get("/hot", async ctx => {
   let $ = cheerio.load(html);
   const container = $(".HotList-list");
   //全部输入完才会执行下一个句
-  let HotTitle = container.find('.HotItem-title').text()
-  let HotRank = container.find('.HotItem-rank').text()
-  let HotExcept = container.find('.HotItem-excerpt').text()
-  let HotZiZi = container.find('.HotItem-metrics').text()
-
-
   //寻找网页链接
   //需要使用一个循环才能获取到这个热榜链接
   //获得了页面的链接
-  let HotLink
-  for (let i = 0; i < 48; i++) {
+  let LinkArray = [];
+  let HotLink;
+  let HotTitle;
+  let HotExcept;
+  let HotRank;
+  let ImgLink;
+  let hash = {};
+  for (let i = 0; i < 46; i++) {
     //try catch捕获错误
     try {
-      HotLink = container.find('.HotItem-content').next()[i].attribs['href']
+      //获取了链接地址
+      HotLink = container
+        .find(".HotItem")
+        .find(".HotItem-content")
+        .next()[i]["attribs"]["href"];
+      //获取了title
+      HotTitle = container.find(".HotItem").find(".HotItem-content")[i]["next"][
+        "attribs"
+      ]["title"];
+      ImgLink = container.find(".HotItem").find(".HotItem-img")[i][
+        "children"
+      ][0]["attribs"]["src"];
+      //获取except
+      // HotExcept = container.find(".HotItem").find(".HotItem-excerpt")[i][
+      //   "children"
+      // ][0]["data"];
+      //获取热度
+      HotRank = container.find(".HotItem").find(".HotItem-metrics")[i][
+        "children"
+      ][1]["data"];
     } catch (error) {
-      HotLink = '没有属性'
+      HotLink = "没有属性";
+      ImgLink = "没有图片";
     }
-
-    console.log(HotLink)
+    LinkArray.push({
+      Title: HotTitle,
+      Rank: HotRank,
+      Link: HotLink,
+      HotImg: ImgLink,
+      index: i
+    });
   }
-  //1.需要标题  热度 顺序 一个网址链接 一个图片链接 存在没有图片的情况
+
+  //reduce使用hash处理获得的重复数据
+  //目前只能看热点内容，移动端点击后会跳转到下载APP姐界面
+  ctx.body = LinkArray.reduce((item, e) => {
+    if (hash[e.Title]) {
+    } else {
+      hash[e.Title] = e.Title;
+      item.push(e);
+    }
+    return item;
+  }, []);
+});
+
+//微博接口完成
+//1.在使用url时需要拼接字符串
+router.get("/weibo", async ctx => {
+  let url = "https://s.weibo.com/top/summary";
+  let data = await superagent.get(url).set({
+    Connection: "keep-alive",
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
+    "content-type": "application/json"
+  });
+  let html = data.text;
+  let $ = cheerio.load(html);
+  let container = $("tbody");
+  let item = container.find("tr");
+  let $a;
+  let $href;
+  let title;
+  let allArray = [];
+  for (let i = 0; i < 51; i++) {
+    //$a就是a标签的全部内容是一个对象
+    $a = container.find(".td-02")[i]["children"][0]["next"];
+    href = $a["attribs"]["href"]; //a标签中的链接
+    title = $a["children"][0]["data"];
+    allArray.push({ Rank: i + 1, href: href, title: title }); //获取热搜标题
+  }
+  ctx.body = allArray;
+});
+
+
+//获取标题内容
+router.get("/github", async ctx => {
+  let url = "https://github.com/trending";
+  let data = await superagent.get(url).set({
+    Connection: "keep-alive",
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
+    "content-type": "application/json"
+  });
+  let html = data.text;
+  let $ = cheerio.load(html);
+  let $box = $(".Box");
+  for (let i = 0; i < 21; i++) {
+    //h1标签中隐藏着项目内容和链接
+    //获得了热门项目的链接 需要拼接 https://github.com/
+    let href = $box.find('.Box-row')[i]["children"][2]["next"]["children"][1]["attribs"]["href"]
+    let title = $box.find('.Box-row')[0]["children"][2]["next"]["children"][1]["children"][2]["next"]["children"][0]["data"]
+    let title2 = $box.find('.Box-row').find('a')[0]["children"][0]
+    console.log(title2)
+  }
 });
 
 app.use(router.routes());
