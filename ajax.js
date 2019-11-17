@@ -453,6 +453,43 @@ router.get('/language', async ctx => {
 
 })
 
+//获取掘金的热榜
+router.get('/juejin', async ctx => {
+    let params = {
+        operationName: "",
+        query: "",
+        variables: {
+            first: 20,
+            after: "",
+            order: "POPULAR"
+        },
+        extensions: {
+            query: {id: "21207e9ddb1de777adeaca7a2fb38030"}
+        }
+    }
+    let url = 'https://web-api.juejin.im/query'
+    let data = await superagent.post(url).send(params).set({
+        Connection: "keep-alive",
+        "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
+        'X-Agent': 'Juejin/Web'
+    })
+    //成功获取到了热点文章的数组内容
+    // ctx.body = data.text
+    const article = data.text
+    const result = JSON.parse(article)
+    let articleArray = result.data.articleFeed.items.edges
+    // ctx.body = articleArray
+    //获取标题和链接
+    let item = articleArray.reduce((item, e, index) => {
+        let url = e.node.originalUrl
+        let title = e.node.title
+        item.push({"Title": title, "Link": url, "Rank": index})
+        return item
+    }, [])
+    ctx.body = item
+})
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 
