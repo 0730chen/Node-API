@@ -419,13 +419,17 @@ router.get("/github", async ctx => {
         let baseUrl = `https://github.com/`
         let href = $box.find('.Box-row')[i]["children"][2]["next"]["children"][1]["attribs"]["href"]
         let title = $box.find('.Box-row')[0]["children"][2]["next"]["children"][1]["children"][2]["next"]["children"][0]["data"]
-        let title2 = $box.find('.Box-row').find('.text-normal')[i]["next"]["data"]
+        let r = /\s*/
+        let title2 = $box.find('.Box-row').find('.text-normal')[i]["next"]["data"].replace(r, '')
+        // console.log(title2);
+
         //获得了全部的标题和链接
         let url = baseUrl + href
         let Title = title + title2
-        allArray.push({"link": url, "title": Title})
+        allArray.push({"Link": url, "Title": title2})
     }
-    console.log(allArray)
+    console.log(allArray);
+
     ctx.body = allArray
 });
 
@@ -488,6 +492,57 @@ router.get('/juejin', async ctx => {
         return item
     }, [])
     ctx.body = item
+})
+
+//搭建V2ex排行榜接口
+router.get('/v2ex', async ctx => {
+    let url = "https://www.v2ex.com/"
+    let data = await superagent(url).set({
+        Connection: "keep-alive",
+        "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
+    })
+    let html = data.text
+    let $ = cheerio.load(html)
+    let $container = $(".box")
+    //找到了标题内容和链接
+    let allArray = []
+    for (let i = 0; i < $container.find(".item").length; i++) {
+        //
+        let $item = $container.find(".item")[i]["children"][1]["children"][1]["children"][0]["children"][5]["children"][0]["children"][0]
+        //获取链接
+        let url = `https://www.v2ex.com/` + $item.attribs["href"]
+        let Title = $item.children[0]["data"]
+        // console.log(url, Title)
+        allArray.push({"Link": url, "Title": Title})
+    }
+    ctx.body = allArray
+})
+//搭建billill热门视频排行榜
+router.get('/bill', async ctx => {
+    let url = "https://www.bilibili.com/ranking"
+    let data = await superagent(url).set({
+        Connection: "keep-alive",
+        "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
+    })
+    let html = data.text
+    let rex = /<a[^>]*href=['"]([^"]*)['"][^>]*>(.*?)<\/a>/g
+    {/*<a href="//www.bilibili.com/video/av75169619" target="_blank" class="title">前方高能！只需10sclassName手中抢走硬币！</a>*/}
+    {/*<img alt="试吃16800元一只的日本网鲍，一顿饭两万结账时倒吸一口凉气" src="//i2.hdslb.com/bfs/archive/de1adc0e9be9a1a9ca9daf28a823981825de65b9.jpg@114w_70h.webp">*/}
+    let imgRex = /<img.+?src="\"(.+?)\".*>/
+    let rex2 = /<a.+?href=\"(.+?)\".*>(.+)<\/a>/g
+    let rex3 = /<a.+?href="\"(.+?)\".*>(.+)<\/a>/g
+    let rex4 = /<a.+?href=\"(.+?)\".*>(\w)*<\/a>/g
+    let lastRex = /<a.*?(?: class="title">|\/>)/g
+    let hrefRex = /<a href=\"(.*)\"? target=\"(.*)\">/
+    let altRex =/alt=(["']+)([\s\S]*?)(\1)/g
+    let DataArray = html.match(altRex)
+    console.log(DataArray);
+    // let item = DataArray.reduce((item,e,index)=>{
+    //     let x = e.match(altRex)
+    //     console.log(x[0].match(/\w*/))
+    // },[])
 })
 
 app.use(router.routes());
