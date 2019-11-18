@@ -527,6 +527,7 @@ router.get('/bill', async ctx => {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
     })
     let html = data.text
+    console.log(html)
     let rex = /<a[^>]*href=['"]([^"]*)['"][^>]*>(.*?)<\/a>/g
     {/*<a href="//www.bilibili.com/video/av75169619" target="_blank" class="title">前方高能！只需10sclassName手中抢走硬币！</a>*/}
     {/*<img alt="试吃16800元一只的日本网鲍，一顿饭两万结账时倒吸一口凉气" src="//i2.hdslb.com/bfs/archive/de1adc0e9be9a1a9ca9daf28a823981825de65b9.jpg@114w_70h.webp">*/}
@@ -535,10 +536,11 @@ router.get('/bill', async ctx => {
     let rex3 = /<a.+?href="\"(.+?)\".*>(.+)<\/a>/g
     let rex4 = /<a.+?href=\"(.+?)\".*>(\w)*<\/a>/g
     let lastRex = /<a.*?(?: class="title">|\/>)/g
-    let hrefRex = /<a href=\"(.*)\"? target=\"(.*)\">/
+    let hrefRex = /<a href=\"\/\/.*?\">?/ //所有的href链接内容
     let altRex =/alt=(["']+)([\s\S]*?)(\1)/g
+    //所有的视频链接\/\/www\.bilibili\.com\/video\/(av)\d{8}
+    //获取所有的文本内容alt=\".*?\"
     let DataArray = html.match(altRex)
-    console.log(DataArray);
     // let item = DataArray.reduce((item,e,index)=>{
     //     let x = e.match(altRex)
     //     console.log(x[0].match(/\w*/))
