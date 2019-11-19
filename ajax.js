@@ -488,7 +488,7 @@ router.get('/juejin', async ctx => {
     let item = articleArray.reduce((item, e, index) => {
         let url = e.node.originalUrl
         let title = e.node.title
-        item.push({"Title": title, "Link": url, "Rank": index})
+        item.push({"Title": title, "Link": url, "Rank": index+1})
         return item
     }, [])
     ctx.body = item
@@ -527,24 +527,77 @@ router.get('/bill', async ctx => {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
     })
     let html = data.text
-    console.log(html)
     let rex = /<a[^>]*href=['"]([^"]*)['"][^>]*>(.*?)<\/a>/g
-    {/*<a href="//www.bilibili.com/video/av75169619" target="_blank" class="title">前方高能！只需10sclassName手中抢走硬币！</a>*/}
-    {/*<img alt="试吃16800元一只的日本网鲍，一顿饭两万结账时倒吸一口凉气" src="//i2.hdslb.com/bfs/archive/de1adc0e9be9a1a9ca9daf28a823981825de65b9.jpg@114w_70h.webp">*/}
+    {/*<a href="//www.bilibili.com/video/av75169619" target="_blank" class="title">前方高能！只需10sclassName手中抢走硬币！</a>*/
+    }
+    {/*<img alt="试吃16800元一只的日本网鲍，一顿饭两万结账时倒吸一口凉气" src="//i2.hdslb.com/bfs/archive/de1adc0e9be9a1a9ca9daf28a823981825de65b9.jpg@114w_70h.webp">*/
+    }
     let imgRex = /<img.+?src="\"(.+?)\".*>/
     let rex2 = /<a.+?href=\"(.+?)\".*>(.+)<\/a>/g
     let rex3 = /<a.+?href="\"(.+?)\".*>(.+)<\/a>/g
     let rex4 = /<a.+?href=\"(.+?)\".*>(\w)*<\/a>/g
     let lastRex = /<a.*?(?: class="title">|\/>)/g
     let hrefRex = /<a href=\"\/\/.*?\">?/ //所有的href链接内容
-    let altRex =/alt=(["']+)([\s\S]*?)(\1)/g
+    let altRex = /alt=(["']+)([\s\S]*?)(\1)/g
     //所有的视频链接\/\/www\.bilibili\.com\/video\/(av)\d{8}
     //获取所有的文本内容alt=\".*?\"
-    let DataArray = html.match(altRex)
-    // let item = DataArray.reduce((item,e,index)=>{
-    //     let x = e.match(altRex)
-    //     console.log(x[0].match(/\w*/))
-    // },[])
+    let urlRex = /www\.bilibili\.com\/video\/(av)\d{8}/g
+    let UrlArray = html.match(urlRex)
+    let TitleArray = html.match(/alt=\".*?\"/g)
+    let AllTitle = TitleArray.reduce((item, e, index) => {
+        let title = e.replace("alt=", '').replace(/\s/g, '')
+        item.push(title)
+        return item
+    }, [])
+    let AllUrl = UrlArray.reduce((item, e, index) => {
+        // console.log(typeof item, item, e, index)
+        if (item.indexOf(e) === -1) {
+            item.push(e)
+        } else {
+
+        }
+        return item
+    }, [])
+    let finallResult = []
+    for (let i = 0; i < 100; i++) {
+        finallResult.push({"Title": AllTitle[i], "Link": AllUrl[i], "Rank": i + 1})
+    }
+    ctx.body = finallResult
+
+})
+//b站排行版接口完成
+
+//构建豆瓣电影排行榜
+router.get('/douban', async ctx => {
+    let url = "https://movie.douban.com/chart"
+    let data = await superagent.get(url).set({
+        Connection: "keep-alive",
+        "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
+    })
+    let html = data.text
+    let urlRex = /https:\/\/movie.douban.com\/subject\/\d{8}/g
+    let titleRex = /title=\".*?\"/g
+    let urlArray = html.match(urlRex)
+    let TitleArray = html.match(titleRex)
+    let AllUrl = urlArray.reduce((item, e, index) => {
+        if (item.indexOf(e) === -1) {
+            item.push(e)
+        }
+        return item
+    }, [])
+    let AllTitle = TitleArray.reduce((item, e, index) => {
+        let title = e.replace('title=', '').replace(/\"/g, "")
+        item.push(title)
+        return item
+    }, [])
+    let finalResult = []
+    for (let i = 0; i < 10; i++) {
+        finalResult.push({"Title": AllTitle[i], "Link": AllUrl[i], "Rank": i + 1})
+    }
+    ctx.body = finalResult
+
+
 })
 
 app.use(router.routes());
