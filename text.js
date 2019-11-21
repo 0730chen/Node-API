@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-fs.readFile("./renti.log", "utf-8", (err, data) => {
+fs.readFile("./renti2.log", "utf-8", (err, data) => {
     if (err) {
         console.log(err);
     } else {

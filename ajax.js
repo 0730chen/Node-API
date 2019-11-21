@@ -123,7 +123,19 @@ router.post("/weather", async ctx => {
         }
     }
 });
+router.get('/test', async ctx => {
+    ctx.body = 'ok'
+})
 //知乎API可以返回多个文章页面
+//重写知乎api
+router.get('/ccc', async ctx => {
+    let url = "https://www.zhihu.com/api/v4//mweb-feed/content/list?category=tuijian&reload=false&utm_source=&count=8"
+    let data = await superagent.get(url).set({
+        'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+        "cookie": "_xsrf=jK29u4eQvBfhy7a8E84Tb9v8AoXFYu6i; _zap=9420a2ed-6673-4542-93a0-5b3cb3d7845d; d_c0=\"AKAjBCA56w2PTvkVrSO6XiGtCGwmoc7QjMs=|1531903857\"; __gads=ID=9166dd567e309628:T=1546853213:S=ALNI_Mbdto8xi5qFbZAT79xY5dg-ze4xnA; __utmc=51854390; l_n_c=1; n_c=1; q_c1=b2573ca1a2134ace9ffc7113516b6761|1571708014000|1571708014000; tshl=; tst=h; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1574068078,1574129079,1574131831,1574226505; tgw_l7_route=4860b599c6644634a0abcd4d10d37251; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1574300115; capsion_ticket=\"2|1:0|10:1574300115|14:capsion_ticket|44:YjY0MDlhMWM2MDk4NDUxYmExYjljNjA1YmQzMDhiMGY=|33131bc984a69427dcdc3ea2c2e3fca026510fcd65ac1cfba9d57f69ce3242e7\"; l_cap_id=\"ZDgwZjE5NjIyNzRiNDBiNGJiNmNlYTdmNzc4ODBkNmQ=|1574300199|b62e825c6eb1fed9b09c5167b19d5152e0e75f8e\"; r_cap_id=\"NzI5NjdmMGViMzYzNDJmMmIxNjZkYzY5N2JkODYzZDU=|1574300199|3aae0c978c86128c4cf24f907c94b44c6e90452d\"; cap_id=\"ZmRiODgyMGY3OTQ3NGY5YmEwMDkwZTExZDJiYzhmZWE=|1574300199|75dd286c4fcdf3379621cbf47f658275c9e5c952\"; __utma=51854390.224633120.1537528699.1571884028.1574300202.10; __utmb=51854390.0.10.1574300202; __utmz=51854390.1574300202.10.7.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmv=51854390.000--|2=registration_date=20170904=1^3=entry_date=20191022=1; serverData=true; _cid=\"2|1:0|10:1574300395|4:_cid|28:MTE4MDc4MjExOTUwNDE4NzM5Mg==|f90f9532de6587595f8225511e6ce81258b06d934ca7faa3e6d88822976e37c2\""
+    })
+    ctx.body = data.text
+})
 router.get("/zhihu", async ctx => {
     let params = {
         session_token: "1d21a48fae24f574fa79e64d8893eb29", //1d21a48fae24f574fa79e64d8893eb29
@@ -301,8 +313,8 @@ router.get("/hot", async ctx => {
         "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
         "content-type": "application/json",
-        cookie:
-            '_xsrf=jK29u4eQvBfhy7a8E84Tb9v8AoXFYu6i; _zap=9420a2ed-6673-4542-93a0-5b3cb3d7845d; d_c0="AKAjBCA56w2PTvkVrSO6XiGtCGwmoc7QjMs=|1531903857"; __gads=ID=9166dd567e309628:T=1546853213:S=ALNI_Mbdto8xi5qFbZAT79xY5dg-ze4xnA; __utmc=51854390; __utmv=51854390.100--|2=registration_date=20170904=1^3=entry_date=20170904=1; __utmz=51854390.1562828657.7.6.utmcsr=cn.bing.com|utmccn=(referral)|utmcmd=referral|utmcct=/; tst=r; l_n_c=1; l_cap_id="ODM3NjNkNzcyMDYwNDI5MDk3NDU5MmJiMjFhNGVhYTQ=|1570602205|efd74e90bee34399b8a2a0b2634c0ea631262f55"; r_cap_id="ODMyNGFiZWJmZDRjNDBkMDk0ZDViYzZhMzg3Yjk0ZTM=|1570602205|fdffccbacd82b69374c24b77e07c7222fe69bb4a"; cap_id="Nzg1NGZjZWMyZWZhNGQxZjk4OGNiZDEzNTFlMWRmMGM=|1570602205|aff072c242fa668dcfd66cbf2eac82e1c5aaa866"; n_c=1; capsion_ticket="2|1:0|10:1571707597|14:capsion_ticket|44:NDczNGU3MWRlNjJiNDU4MjlmMzk5N2E2OTRhZTcyYjM=|1be0762519c170b5595fd27d9fcf12ad044449af116e2bdc93892e3eca641f27"; z_c0="2|1:0|10:1571707697|4:z_c0|92:Mi4xdGRiY0JRQUFBQUFBb0NNRUlEbnJEU2NBQUFDRUFsVk5NZWpWWFFDYjFSeV9UanFPWDVOd2xtYjltR0pHVkNJSEN3|b1956e3e29ed4b5edbe56e7a2d351a51056feada15e0a7eb31adee42880de999"; q_c1=b2573ca1a2134ace9ffc7113516b6761|1571708014000|1571708014000; __utma=51854390.224633120.1537528699.1562828657.1571884028.9; tgw_l7_route=7bacb9af7224ed68945ce419f4dea76d; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1571901788,1571901850,1571902840,1571902869; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1571902869',
+        "cookie": "_xsrf=jK29u4eQvBfhy7a8E84Tb9v8AoXFYu6i; _zap=9420a2ed-6673-4542-93a0-5b3cb3d7845d; d_c0=\"AKAjBCA56w2PTvkVrSO6XiGtCGwmoc7QjMs=|1531903857\"; __gads=ID=9166dd567e309628:T=1546853213:S=ALNI_Mbdto8xi5qFbZAT79xY5dg-ze4xnA; __utmc=51854390; l_n_c=1; n_c=1; q_c1=b2573ca1a2134ace9ffc7113516b6761|1571708014000|1571708014000; tshl=; tst=h; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1574068078,1574129079,1574131831,1574226505; l_cap_id=\"ZDgwZjE5NjIyNzRiNDBiNGJiNmNlYTdmNzc4ODBkNmQ=|1574300199|b62e825c6eb1fed9b09c5167b19d5152e0e75f8e\"; r_cap_id=\"NzI5NjdmMGViMzYzNDJmMmIxNjZkYzY5N2JkODYzZDU=|1574300199|3aae0c978c86128c4cf24f907c94b44c6e90452d\"; cap_id=\"ZmRiODgyMGY3OTQ3NGY5YmEwMDkwZTExZDJiYzhmZWE=|1574300199|75dd286c4fcdf3379621cbf47f658275c9e5c952\"; __utmz=51854390.1574300202.10.7.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utma=51854390.224633120.1537528699.1571884028.1574300202.10; __utmv=51854390.000--|2=registration_date=20170904=1^3=entry_date=20191022=1; _cid=\"2|1:0|10:1574300395|4:_cid|28:MTE4MDc4MjExOTUwNDE4NzM5Mg==|f90f9532de6587595f8225511e6ce81258b06d934ca7faa3e6d88822976e37c2\"; tgw_l7_route=ace26f527cbd74fe33dbcdf5e5402f84; capsion_ticket=\"2|1:0|10:1574315231|14:capsion_ticket|44:NjY5OGQ3YTgxOTA0NDYxZGI4ZjgwYjViMmZhYTJkNzM=|832ebda98664072fea7e05462c019fb3df4e18c8957f60b7cd18939f79c33106\"; z_c0=\"2|1:0|10:1574315288|4:z_c0|92:Mi4xdGRiY0JRQUFBQUFBb0NNRUlEbnJEU1lBQUFCZ0FsVk5HSFBEWGdEV2FPV2dxSnFVaG5fd1R1WEdWN2laZVFlYVRB|1b3e34e98efd7866942de552c5869fda118c2f2d9f3cb98f9d7a3aaef86f0162\"; unlock_ticket=\"AJDCrYudUgwmAAAAYAJVTSAs1l1LPEq2GCL2hxmL-4X0O2MvUib2wg==\"; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1574315294",
+
         "content-type": "application/json"
     });
     let HotArray = [];
@@ -311,6 +323,7 @@ router.get("/hot", async ctx => {
     let HotMetricsArray = [];
     let html = data.text;
     let $ = cheerio.load(html);
+    console.log(html)
     const container = $(".HotList-list");
     //全部输入完才会执行下一个句
     //寻找网页链接
@@ -488,7 +501,7 @@ router.get('/juejin', async ctx => {
     let item = articleArray.reduce((item, e, index) => {
         let url = e.node.originalUrl
         let title = e.node.title
-        item.push({"Title": title, "Link": url, "Rank": index+1})
+        item.push({"Title": title, "Link": url, "Rank": index + 1})
         return item
     }, [])
     ctx.body = item

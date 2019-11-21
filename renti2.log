@@ -1,0 +1,967 @@
+# SEGGER J-Link RTT Viewer V6.44e Terminal Log File
+# Compiled: 16:19:49 on Apr  5 2019
+# Logging started @ 20 Nov 2019 14:24:51
+<00> info> app: count: 164
+<00> info> app:  22.40C
+<00> info> app: count: 165
+<00> info> app:  22.44C
+<00> info> app: count: 166
+<00> info> app:  22.46C
+<00> info> app: count: 167
+<00> info> app:  22.50C
+<00> info> app: count: 168
+<00> info> app:  22.53C
+<00> info> app: count: 169
+<00> info> app:  22.57C
+<00> info> app: count: 170
+<00> info> app:  22.62C
+<00> info> app: count: 171
+<00> info> app:  22.64C
+<00> info> app: count: 172
+<00> info> app:  22.95C
+<00> info> app: count: 173
+<00> info> app:  23.53C
+<00> info> app: count: 174
+<00> info> app:  23.78C
+<00> info> app: count: 175
+<00> info> app:  23.78C
+<00> info> app: count: 176
+<00> info> app:  23.78C
+<00> info> app: count: 177
+<00> info> app:  23.78C
+<00> info> app: count: 178
+<00> info> app:  23.78C
+<00> info> app: count: 179
+<00> info> app:  23.78C
+<00> info> app: count: 180
+<00> info> app:  25.03C
+<00> info> app: count: 181
+<00> info> app:  26.53C
+<00> info> app: count: 182
+<00> info> app:  28.28C
+<00> info> app: count: 183
+<00> info> app:  29.85C
+<00> info> app: count: 184
+<00> info> app:  31.00C
+<00> info> app: count: 185
+<00> info> app:  31.80C
+<00> info> app: count: 186
+<00> info> app:  32.10C
+<00> info> app: count: 187
+<00> info> app:  32.20C
+<00> info> app: count: 188
+<00> info> app:  32.25C
+<00> info> app: count: 189
+<00> info> app:  32.26C
+<00> info> app: count: 190
+<00> info> app:  32.26C
+<00> info> app: count: 191
+<00> info> app:  32.26C
+<00> info> app: count: 192
+<00> info> app:  32.26C
+<00> info> app: count: 193
+<00> info> app:  32.26C
+<00> info> app: count: 194
+<00> info> app:  32.26C
+<00> info> app: count: 195
+<00> info> app:  32.89C
+<00> info> app: count: 196
+<00> info> app:  33.14C
+<00> info> app: count: 197
+<00> info> app:  33.27C
+<00> info> app: count: 198
+<00> info> app:  33.35C
+<00> info> app: count: 199
+<00> info> app:  33.41C
+<00> info> app: count: 200
+<00> info> app:  33.47C
+<00> info> app: count: 201
+<00> info> app:  33.52C
+<00> info> app: count: 202
+<00> info> app:  33.55C
+<00> info> app: count: 203
+<00> info> app:  33.57C
+<00> info> app: count: 204
+<00> info> app:  33.57C
+<00> info> app: count: 205
+<00> info> app:  33.57C
+<00> info> app: count: 206
+<00> info> app:  33.57C
+<00> info> app: count: 207
+<00> info> app:  33.57C
+<00> info> app: count: 208
+<00> info> app:  33.57C
+<00> info> app: count: 209
+<00> info> app:  33.57C
+<00> info> app: count: 210
+<00> info> app:  33.67C
+<00> info> app: count: 211
+<00> info> app:  33.77C
+<00> info> app: count: 212
+<00> info> app:  33.85C
+<00> info> app: count: 213
+<00> info> app:  33.94C
+<00> info> app: count: 214
+<00> info> app:  34.02C
+<00> info> app: count: 215
+<00> info> app:  34.09C
+<00> info> app: count: 216
+<00> info> app:  34.14C
+<00> info> app: count: 217
+<00> info> app:  34.16C
+<00> info> app: count: 218
+<00> info> app:  34.17C
+<00> info> app: count: 219
+<00> info> app:  34.18C
+<00> info> app: count: 220
+<00> info> app:  34.18C
+<00> info> app: count: 221
+<00> info> app:  34.18C
+<00> info> app: count: 222
+<00> info> app:  34.18C
+<00> info> app: count: 223
+<00> info> app:  34.18C
+<00> info> app: count: 224
+<00> info> app:  34.18C
+<00> info> app: count: 225
+<00> info> app:  34.28C
+<00> info> app: count: 226
+<00> info> app:  34.35C
+<00> info> app: count: 227
+<00> info> app:  34.42C
+<00> info> app: count: 228
+<00> info> app:  34.47C
+<00> info> app: count: 229
+<00> info> app:  34.53C
+<00> info> app: count: 230
+<00> info> app:  34.58C
+<00> info> app: count: 231
+<00> info> app:  34.61C
+<00> info> app: count: 232
+<00> info> app:  34.63C
+<00> info> app: count: 233
+<00> info> app:  34.64C
+<00> info> app: count: 234
+<00> info> app:  34.64C
+<00> info> app: count: 235
+<00> info> app:  34.64C
+<00> info> app: count: 236
+<00> info> app:  34.64C
+<00> info> app: count: 237
+<00> info> app:  34.64C
+<00> info> app: count: 238
+<00> info> app:  34.64C
+<00> info> app: count: 239
+<00> info> app:  34.64C
+<00> info> app: count: 240
+<00> info> app:  34.71C
+<00> info> app: count: 241
+<00> info> app:  34.77C
+<00> info> app: count: 242
+<00> info> app:  34.81C
+<00> info> app: count: 243
+<00> info> app:  34.85C
+<00> info> app: count: 244
+<00> info> app:  34.90C
+<00> info> app: count: 245
+<00> info> app:  34.93C
+<00> info> app: count: 246
+<00> info> app:  34.96C
+<00> info> app: count: 247
+<00> info> app:  34.97C
+<00> info> app: count: 248
+<00> info> app:  34.98C
+<00> info> app: count: 249
+<00> info> app:  34.98C
+<00> info> app: count: 250
+<00> info> app:  34.98C
+<00> info> app: count: 251
+<00> info> app:  34.98C
+<00> info> app: count: 252
+<00> info> app:  34.98C
+<00> info> app: count: 253
+<00> info> app:  34.98C
+<00> info> app: count: 254
+<00> info> app:  34.98C
+<00> info> app: count: 255
+<00> info> app:  35.03C
+<00> info> app: count: 256
+<00> info> app:  35.07C
+<00> info> app: count: 257
+<00> info> app:  35.10C
+<00> info> app: count: 258
+<00> info> app:  35.14C
+<00> info> app: count: 259
+<00> info> app:  35.17C
+<00> info> app: count: 260
+<00> info> app:  35.20C
+<00> info> app: count: 261
+<00> info> app:  35.21C
+<00> info> app: count: 262
+<00> info> app:  35.22C
+<00> info> app: count: 263
+<00> info> app:  35.23C
+<00> info> app: count: 264
+<00> info> app:  35.24C
+<00> info> app: count: 265
+<00> info> app:  35.24C
+<00> info> app: count: 266
+<00> info> app:  35.24C
+<00> info> app: count: 267
+<00> info> app:  35.24C
+<00> info> app: count: 268
+<00> info> app:  35.24C
+<00> info> app: count: 269
+<00> info> app:  35.24C
+<00> info> app: count: 270
+<00> info> app:  35.28C
+<00> info> app: count: 271
+<00> info> app:  35.31C
+<00> info> app: count: 272
+<00> info> app:  35.33C
+<00> info> app: count: 273
+<00> info> app:  35.36C
+<00> info> app: count: 274
+<00> info> app:  35.39C
+<00> info> app: count: 275
+<00> info> app:  35.41C
+<00> info> app: count: 276
+<00> info> app:  35.42C
+<00> info> app: count: 277
+<00> info> app:  35.43C
+<00> info> app: count: 278
+<00> info> app:  35.43C
+<00> info> app: count: 279
+<00> info> app:  35.44C
+<00> info> app: count: 280
+<00> info> app:  35.44C
+<00> info> app: count: 281
+<00> info> app:  35.44C
+<00> info> app: count: 282
+<00> info> app:  35.44C
+<00> info> app: count: 283
+<00> info> app:  35.44C
+<00> info> app: count: 284
+<00> info> app:  35.44C
+<00> info> app: count: 285
+<00> info> app:  35.47C
+<00> info> app: count: 286
+<00> info> app:  35.50C
+<00> info> app: count: 287
+<00> info> app:  35.53C
+<00> info> app: count: 288
+<00> info> app:  35.55C
+<00> info> app: count: 289
+<00> info> app:  35.57C
+<00> info> app: count: 290
+<00> info> app:  35.59C
+<00> info> app: count: 291
+<00> info> app:  35.60C
+<00> info> app: count: 292
+<00> info> app:  35.60C
+<00> info> app: count: 293
+<00> info> app:  35.60C
+<00> info> app: count: 294
+<00> info> app:  35.61C
+<00> info> app: count: 295
+<00> info> app:  35.61C
+<00> info> app: count: 296
+<00> info> app:  35.61C
+<00> info> app: count: 297
+<00> info> app:  35.61C
+<00> info> app: count: 298
+<00> info> app:  35.61C
+<00> info> app: count: 299
+<00> info> app:  35.61C
+<00> info> app: count: 300
+<00> info> app:  35.64C
+<00> info> app: count: 301
+<00> info> app:  35.66C
+<00> info> app: count: 302
+<00> info> app:  35.67C
+<00> info> app: count: 303
+<00> info> app:  35.69C
+<00> info> app: count: 304
+<00> info> app:  35.71C
+<00> info> app: count: 305
+<00> info> app:  35.73C
+<00> info> app: count: 306
+<00> info> app:  35.74C
+<00> info> app: count: 307
+<00> info> app:  35.75C
+<00> info> app: count: 308
+<00> info> app:  35.75C
+<00> info> app: count: 309
+<00> info> app:  35.75C
+<00> info> app: count: 310
+<00> info> app:  35.75C
+<00> info> app: count: 311
+<00> info> app:  35.75C
+<00> info> app: count: 312
+<00> info> app:  35.75C
+<00> info> app: count: 313
+<00> info> app:  35.75C
+<00> info> app: count: 314
+<00> info> app:  35.75C
+<00> info> app: count: 315
+<00> info> app:  35.77C
+<00> info> app: count: 316
+<00> info> app:  35.78C
+<00> info> app: count: 317
+<00> info> app:  35.80C
+<00> info> app: count: 318
+<00> info> app:  35.82C
+<00> info> app: count: 319
+<00> info> app:  35.83C
+<00> info> app: count: 320
+<00> info> app:  35.85C
+<00> info> app: count: 321
+<00> info> app:  35.85C
+<00> info> app: count: 322
+<00> info> app:  35.86C
+<00> info> app: count: 323
+<00> info> app:  35.86C
+<00> info> app: count: 324
+<00> info> app:  35.86C
+<00> info> app: count: 325
+<00> info> app:  35.86C
+<00> info> app: count: 326
+<00> info> app:  35.86C
+<00> info> app: count: 327
+<00> info> app:  35.86C
+<00> info> app: count: 328
+<00> info> app:  35.86C
+<00> info> app: count: 329
+<00> info> app:  35.86C
+<00> info> app: count: 330
+<00> info> app:  35.89C
+<00> info> app: count: 331
+<00> info> app:  35.90C
+<00> info> app: count: 332
+<00> info> app:  35.92C
+<00> info> app: count: 333
+<00> info> app:  35.92C
+<00> info> app: count: 334
+<00> info> app:  35.94C
+<00> info> app: count: 335
+<00> info> app:  35.95C
+<00> info> app: count: 336
+<00> info> app:  35.96C
+<00> info> app: count: 337
+<00> info> app:  35.96C
+<00> info> app: count: 338
+<00> info> app:  35.96C
+<00> info> app: count: 339
+<00> info> app:  35.96C
+<00> info> app: count: 340
+<00> info> app:  35.96C
+<00> info> app: count: 341
+<00> info> app:  35.96C
+<00> info> app: count: 342
+<00> info> app:  35.96C
+<00> info> app: count: 343
+<00> info> app:  35.96C
+<00> info> app: count: 344
+<00> info> app:  35.96C
+<00> info> app: count: 345
+<00> info> app:  35.98C
+<00> info> app: count: 346
+<00> info> app:  36.00C
+<00> info> app: count: 347
+<00> info> app:  36.00C
+<00> info> app: count: 348
+<00> info> app:  36.02C
+<00> info> app: count: 349
+<00> info> app:  36.03C
+<00> info> app: count: 350
+<00> info> app:  36.04C
+<00> info> app: count: 351
+<00> info> app:  36.05C
+<00> info> app: count: 352
+<00> info> app:  36.05C
+<00> info> app: count: 353
+<00> info> app:  36.05C
+<00> info> app: count: 354
+<00> info> app:  36.05C
+<00> info> app: count: 355
+<00> info> app:  36.05C
+<00> info> app: count: 356
+<00> info> app:  36.05C
+<00> info> app: count: 357
+<00> info> app:  36.05C
+<00> info> app: count: 358
+<00> info> app:  36.05C
+<00> info> app: count: 359
+<00> info> app:  36.05C
+<00> info> app: count: 360
+<00> info> app:  36.07C
+<00> info> app: count: 361
+<00> info> app:  36.08C
+<00> info> app: count: 362
+<00> info> app:  36.09C
+<00> info> app: count: 363
+<00> info> app:  36.10C
+<00> info> app: count: 364
+<00> info> app:  36.11C
+<00> info> app: count: 365
+<00> info> app:  36.12C
+<00> info> app: count: 366
+<00> info> app:  36.13C
+<00> info> app: count: 367
+<00> info> app:  36.13C
+<00> info> app: count: 368
+<00> info> app:  36.13C
+<00> info> app: count: 369
+<00> info> app:  36.13C
+<00> info> app: count: 370
+<00> info> app:  36.13C
+<00> info> app: count: 371
+<00> info> app:  36.13C
+<00> info> app: count: 372
+<00> info> app:  36.13C
+<00> info> app: count: 373
+<00> info> app:  36.13C
+<00> info> app: count: 374
+<00> info> app:  36.13C
+<00> info> app: count: 375
+<00> info> app:  36.14C
+<00> info> app: count: 376
+<00> info> app:  36.16C
+<00> info> app: count: 377
+<00> info> app:  36.17C
+<00> info> app: count: 378
+<00> info> app:  36.17C
+<00> info> app: count: 379
+<00> info> app:  36.18C
+<00> info> app: count: 380
+<00> info> app:  36.19C
+<00> info> app: count: 381
+<00> info> app:  36.20C
+<00> info> app: count: 382
+<00> info> app:  36.20C
+<00> info> app: count: 383
+<00> info> app:  36.21C
+<00> info> app: count: 384
+<00> info> app:  36.21C
+<00> info> app: count: 385
+<00> info> app:  36.21C
+<00> info> app: count: 386
+<00> info> app:  36.21C
+<00> info> app: count: 387
+<00> info> app:  36.21C
+<00> info> app: count: 388
+<00> info> app:  36.21C
+<00> info> app: count: 389
+<00> info> app:  36.21C
+<00> info> app: count: 390
+<00> info> app:  36.21C
+<00> info> app: count: 391
+<00> info> app:  36.22C
+<00> info> app: count: 392
+<00> info> app:  36.24C
+<00> info> app: count: 393
+<00> info> app:  36.25C
+<00> info> app: count: 394
+<00> info> app:  36.25C
+<00> info> app: count: 395
+<00> info> app:  36.25C
+<00> info> app: count: 396
+<00> info> app:  36.26C
+<00> info> app: count: 397
+<00> info> app:  36.27C
+<00> info> app: count: 398
+<00> info> app:  36.27C
+<00> info> app: count: 399
+<00> info> app:  36.27C
+<00> info> app: count: 400
+<00> info> app:  36.27C
+<00> info> app: count: 401
+<00> info> app:  36.27C
+<00> info> app: count: 402
+<00> info> app:  36.27C
+<00> info> app: count: 403
+<00> info> app:  36.27C
+<00> info> app: count: 404
+<00> info> app:  36.27C
+<00> info> app: count: 405
+<00> info> app:  36.28C
+<00> info> app: count: 406
+<00> info> app:  36.28C
+<00> info> app: count: 407
+<00> info> app:  36.30C
+<00> info> app: count: 408
+<00> info> app:  36.31C
+<00> info> app: count: 409
+<00> info> app:  36.32C
+<00> info> app: count: 410
+<00> info> app:  36.32C
+<00> info> app: count: 411
+<00> info> app:  36.32C
+<00> info> app: count: 412
+<00> info> app:  36.32C
+<00> info> app: count: 413
+<00> info> app:  36.32C
+<00> info> app: count: 414
+<00> info> app:  36.32C
+<00> info> app: count: 415
+<00> info> app:  36.32C
+<00> info> app: count: 416
+<00> info> app:  36.32C
+<00> info> app: count: 417
+<00> info> app:  36.32C
+<00> info> app: count: 418
+<00> info> app:  36.32C
+<00> info> app: count: 419
+<00> info> app:  36.32C
+<00> info> app: count: 420
+<00> info> app:  36.34C
+<00> info> app: count: 421
+<00> info> app:  36.35C
+<00> info> app: count: 422
+<00> info> app:  36.35C
+<00> info> app: count: 423
+<00> info> app:  36.36C
+<00> info> app: count: 424
+<00> info> app:  36.37C
+<00> info> app: count: 425
+<00> info> app:  36.37C
+<00> info> app: count: 426
+<00> info> app:  36.38C
+<00> info> app: count: 427
+<00> info> app:  36.38C
+<00> info> app: count: 428
+<00> info> app:  36.38C
+<00> info> app: count: 429
+<00> info> app:  36.38C
+<00> info> app: count: 430
+<00> info> app:  36.38C
+<00> info> app: count: 431
+<00> info> app:  36.38C
+<00> info> app: count: 432
+<00> info> app:  36.38C
+<00> info> app: count: 433
+<00> info> app:  36.38C
+<00> info> app: count: 434
+<00> info> app:  36.38C
+<00> info> app: count: 435
+<00> info> app:  36.39C
+<00> info> app: count: 436
+<00> info> app:  36.39C
+<00> info> app: count: 437
+<00> info> app:  36.40C
+<00> info> app: count: 438
+<00> info> app:  36.41C
+<00> info> app: count: 439
+<00> info> app:  36.41C
+<00> info> app: count: 440
+<00> info> app:  36.42C
+<00> info> app: count: 441
+<00> info> app:  36.42C
+<00> info> app: count: 442
+<00> info> app:  36.42C
+<00> info> app: count: 443
+<00> info> app:  36.42C
+<00> info> app: count: 444
+<00> info> app:  36.42C
+<00> info> app: count: 445
+<00> info> app:  36.42C
+<00> info> app: count: 446
+<00> info> app:  36.42C
+<00> info> app: count: 447
+<00> info> app:  36.42C
+<00> info> app: count: 448
+<00> info> app:  36.42C
+<00> info> app: count: 449
+<00> info> app:  36.42C
+<00> info> app: count: 450
+<00> info> app:  36.43C
+<00> info> app: count: 451
+<00> info> app:  36.44C
+<00> info> app: count: 452
+<00> info> app:  36.44C
+<00> info> app: count: 453
+<00> info> app:  36.45C
+<00> info> app: count: 454
+<00> info> app:  36.45C
+<00> info> app: count: 455
+<00> info> app:  36.46C
+<00> info> app: count: 456
+<00> info> app:  36.46C
+<00> info> app: count: 457
+<00> info> app:  36.46C
+<00> info> app: count: 458
+<00> info> app:  36.46C
+<00> info> app: count: 459
+<00> info> app:  36.46C
+<00> info> app: count: 460
+<00> info> app:  36.46C
+<00> info> app: count: 461
+<00> info> app:  36.46C
+<00> info> app: count: 462
+<00> info> app:  36.46C
+<00> info> app: count: 463
+<00> info> app:  36.46C
+<00> info> app: count: 464
+<00> info> app:  36.46C
+<00> info> app: count: 465
+<00> info> app:  36.46C
+<00> info> app: count: 466
+<00> info> app:  36.47C
+<00> info> app: count: 467
+<00> info> app:  36.48C
+<00> info> app: count: 468
+<00> info> app:  36.48C
+<00> info> app: count: 469
+<00> info> app:  36.49C
+<00> info> app: count: 470
+<00> info> app:  36.49C
+<00> info> app: count: 471
+<00> info> app:  36.50C
+<00> info> app: count: 472
+<00> info> app:  36.50C
+<00> info> app: count: 473
+<00> info> app:  36.50C
+<00> info> app: count: 474
+<00> info> app:  36.50C
+<00> info> app: count: 475
+<00> info> app:  36.50C
+<00> info> app: count: 476
+<00> info> app:  36.50C
+<00> info> app: count: 477
+<00> info> app:  36.50C
+<00> info> app: count: 478
+<00> info> app:  36.50C
+<00> info> app: count: 479
+<00> info> app:  36.50C
+<00> info> app: count: 480
+<00> info> app:  36.50C
+<00> info> app: count: 481
+<00> info> app:  36.51C
+<00> info> app: count: 482
+<00> info> app:  36.51C
+<00> info> app: count: 483
+<00> info> app:  36.52C
+<00> info> app: count: 484
+<00> info> app:  36.53C
+<00> info> app: count: 485
+<00> info> app:  36.53C
+<00> info> app: count: 486
+<00> info> app:  36.53C
+<00> info> app: count: 487
+<00> info> app:  36.53C
+<00> info> app: count: 488
+<00> info> app:  36.53C
+<00> info> app: count: 489
+<00> info> app:  36.53C
+<00> info> app: count: 490
+<00> info> app:  36.53C
+<00> info> app: count: 491
+<00> info> app:  36.53C
+<00> info> app: count: 492
+<00> info> app:  36.53C
+<00> info> app: count: 493
+<00> info> app:  36.53C
+<00> info> app: count: 494
+<00> info> app:  36.53C
+<00> info> app: count: 495
+<00> info> app:  36.53C
+<00> info> app: count: 496
+<00> info> app:  36.54C
+<00> info> app: count: 497
+<00> info> app:  36.55C
+<00> info> app: count: 498
+<00> info> app:  36.55C
+<00> info> app: count: 499
+<00> info> app:  36.56C
+<00> info> app: count: 500
+<00> info> app:  36.56C
+<00> info> app: count: 501
+<00> info> app:  36.57C
+<00> info> app: count: 502
+<00> info> app:  36.57C
+<00> info> app: count: 503
+<00> info> app:  36.57C
+<00> info> app: count: 504
+<00> info> app:  36.57C
+<00> info> app: count: 505
+<00> info> app:  36.57C
+<00> info> app: count: 506
+<00> info> app:  36.57C
+<00> info> app: count: 507
+<00> info> app:  36.57C
+<00> info> app: count: 508
+<00> info> app:  36.57C
+<00> info> app: count: 509
+<00> info> app:  36.57C
+<00> info> app: count: 510
+<00> info> app:  36.57C
+<00> info> app: count: 511
+<00> info> app:  36.58C
+<00> info> app: count: 512
+<00> info> app:  36.58C
+<00> info> app: count: 513
+<00> info> app:  36.59C
+<00> info> app: count: 514
+<00> info> app:  36.60C
+<00> info> app: count: 515
+<00> info> app:  36.60C
+<00> info> app: count: 516
+<00> info> app:  36.60C
+<00> info> app: count: 517
+<00> info> app:  36.60C
+<00> info> app: count: 518
+<00> info> app:  36.60C
+<00> info> app: count: 519
+<00> info> app:  36.60C
+<00> info> app: count: 520
+<00> info> app:  36.60C
+<00> info> app: count: 521
+<00> info> app:  36.60C
+<00> info> app: count: 522
+<00> info> app:  36.60C
+<00> info> app: count: 523
+<00> info> app:  36.60C
+<00> info> app: count: 524
+<00> info> app:  36.60C
+<00> info> app: count: 525
+<00> info> app:  36.60C
+<00> info> app: count: 526
+<00> info> app:  36.61C
+<00> info> app: count: 527
+<00> info> app:  36.61C
+<00> info> app: count: 528
+<00> info> app:  36.62C
+<00> info> app: count: 529
+<00> info> app:  36.62C
+<00> info> app: count: 530
+<00> info> app:  36.62C
+<00> info> app: count: 531
+<00> info> app:  36.63C
+<00> info> app: count: 532
+<00> info> app:  36.63C
+<00> info> app: count: 533
+<00> info> app:  36.63C
+<00> info> app: count: 534
+<00> info> app:  36.63C
+<00> info> app: count: 535
+<00> info> app:  36.63C
+<00> info> app: count: 536
+<00> info> app:  36.63C
+<00> info> app: count: 537
+<00> info> app:  36.63C
+<00> info> app: count: 538
+<00> info> app:  36.63C
+<00> info> app: count: 539
+<00> info> app:  36.63C
+<00> info> app: count: 540
+<00> info> app:  36.64C
+<00> info> app: count: 541
+<00> info> app:  36.64C
+<00> info> app: count: 542
+<00> info> app:  36.64C
+<00> info> app: count: 543
+<00> info> app:  36.64C
+<00> info> app: count: 544
+<00> info> app:  36.64C
+<00> info> app: count: 545
+<00> info> app:  36.64C
+<00> info> app: count: 546
+<00> info> app:  36.64C
+<00> info> app: count: 547
+<00> info> app:  36.65C
+<00> info> app: count: 548
+<00> info> app:  36.65C
+<00> info> app: count: 549
+<00> info> app:  36.65C
+<00> info> app: count: 550
+<00> info> app:  36.65C
+<00> info> app: count: 551
+<00> info> app:  36.65C
+<00> info> app: count: 552
+<00> info> app:  36.65C
+<00> info> app: count: 553
+<00> info> app:  36.65C
+<00> info> app: count: 554
+<00> info> app:  36.65C
+<00> info> app: count: 555
+<00> info> app:  36.65C
+<00> info> app: count: 556
+<00> info> app:  36.66C
+<00> info> app: count: 557
+<00> info> app:  36.66C
+<00> info> app: count: 558
+<00> info> app:  36.66C
+<00> info> app: count: 559
+<00> info> app:  36.67C
+<00> info> app: count: 560
+<00> info> app:  36.67C
+<00> info> app: count: 561
+<00> info> app:  36.67C
+<00> info> app: count: 562
+<00> info> app:  36.67C
+<00> info> app: count: 563
+<00> info> app:  36.67C
+<00> info> app: count: 564
+<00> info> app:  36.67C
+<00> info> app: count: 565
+<00> info> app:  36.67C
+<00> info> app: count: 566
+<00> info> app:  36.67C
+<00> info> app: count: 567
+<00> info> app:  36.67C
+<00> info> app: count: 568
+<00> info> app:  36.67C
+<00> info> app: count: 569
+<00> info> app:  36.67C
+<00> info> app: count: 570
+<00> info> app:  36.67C
+<00> info> app: count: 571
+<00> info> app:  36.67C
+<00> info> app: count: 572
+<00> info> app:  36.67C
+<00> info> app: count: 573
+<00> info> app:  36.67C
+<00> info> app: count: 574
+<00> info> app:  36.67C
+<00> info> app: count: 575
+<00> info> app:  36.68C
+<00> info> app: count: 576
+<00> info> app:  36.68C
+<00> info> app: count: 577
+<00> info> app:  36.68C
+<00> info> app: count: 578
+<00> info> app:  36.68C
+<00> info> app: count: 579
+<00> info> app:  36.68C
+<00> info> app: count: 580
+<00> info> app:  36.68C
+<00> info> app: count: 581
+<00> info> app:  36.68C
+<00> info> app: count: 582
+<00> info> app:  36.68C
+<00> info> app: count: 583
+<00> info> app:  36.68C
+<00> info> app: count: 584
+<00> info> app:  36.68C
+<00> info> app: count: 585
+<00> info> app:  36.68C
+<00> info> app: count: 586
+<00> info> app:  36.68C
+<00> info> app: count: 587
+<00> info> app:  36.69C
+<00> info> app: count: 588
+<00> info> app:  36.69C
+<00> info> app: count: 589
+<00> info> app:  36.69C
+<00> info> app: count: 590
+<00> info> app:  36.69C
+<00> info> app: count: 591
+<00> info> app:  36.69C
+<00> info> app: count: 592
+<00> info> app:  36.69C
+<00> info> app: count: 593
+<00> info> app:  36.69C
+<00> info> app: count: 594
+<00> info> app:  36.69C
+<00> info> app: count: 595
+<00> info> app:  36.69C
+<00> info> app: count: 596
+<00> info> app:  36.69C
+<00> info> app: count: 597
+<00> info> app:  36.69C
+<00> info> app: count: 598
+<00> info> app:  36.69C
+<00> info> app: count: 599
+<00> info> app:  36.69C
+<00> info> app: count: 600
+<00> info> app:  36.70C
+<00> info> app: count: 601
+<00> info> app:  36.70C
+<00> info> app: count: 602
+<00> info> app:  36.70C
+<00> info> app: count: 603
+<00> info> app:  36.70C
+<00> info> app: count: 604
+<00> info> app:  36.71C
+<00> info> app: count: 605
+<00> info> app:  36.71C
+<00> info> app: count: 606
+<00> info> app:  36.71C
+<00> info> app: count: 607
+<00> info> app:  36.71C
+<00> info> app: count: 608
+<00> info> app:  36.71C
+<00> info> app: count: 609
+<00> info> app:  36.71C
+<00> info> app: count: 610
+<00> info> app:  36.71C
+<00> info> app: count: 611
+<00> info> app:  36.71C
+<00> info> app: count: 612
+<00> info> app:  36.71C
+<00> info> app: count: 613
+<00> info> app:  36.71C
+<00> info> app: count: 614
+<00> info> app:  36.71C
+<00> info> app: count: 615
+<00> info> app:  36.71C
+<00> info> app: count: 616
+<00> info> app:  36.71C
+<00> info> app: count: 617
+<00> info> app:  36.71C
+<00> info> app: count: 618
+<00> info> app:  36.71C
+<00> info> app: count: 619
+<00> info> app:  36.72C
+<00> info> app: count: 620
+<00> info> app:  36.72C
+<00> info> app: count: 621
+<00> info> app:  36.72C
+<00> info> app: count: 622
+<00> info> app:  36.72C
+<00> info> app: count: 623
+<00> info> app:  36.72C
+<00> info> app: count: 624
+<00> info> app:  36.72C
+<00> info> app: count: 625
+<00> info> app:  36.72C
+<00> info> app: count: 626
+<00> info> app:  36.72C
+<00> info> app: count: 627
+<00> info> app:  36.72C
+<00> info> app: count: 628
+<00> info> app:  36.72C
+<00> info> app: count: 629
+<00> info> app:  36.72C
+<00> info> app: count: 630
+<00> info> app:  36.72C
+<00> info> app: count: 631
+<00> info> app:  36.72C
+<00> info> app: count: 632
+<00> info> app:  36.73C
+<00> info> app: count: 633
+<00> info> app:  36.73C
+<00> info> app: count: 634
+<00> info> app:  36.73C
+<00> info> app: count: 635
+<00> info> app:  36.73C
+<00> info> app: count: 636
+<00> info> app:  36.73C
+<00> info> app: count: 637
+<00> info> app:  36.74C
+<00> info> app: count: 638
+<00> info> app:  36.74C
+<00> info> app: count: 639
+<00> info> app:  36.74C
+<00> info> app: count: 640
+<00> info> app:  36.74C
+<00> info> app: count: 641
+<00> info> app:  36.74C
+<00> info> app: count: 642
+<00> info> app:  36.74C
+<00> info> app: count: 643
+<00> info> app:  36.74C
+<00> info> app: count: 644
+<00> info> app:  36.74C
+
+# Logging stopped @ 20 Nov 2019 14:57:40

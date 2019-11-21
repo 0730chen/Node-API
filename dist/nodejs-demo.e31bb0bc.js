@@ -6689,7 +6689,7 @@ var helpers = {
 	},
 
 	/**
-	 * Basic javascript inheritance based on the model created in Backbone.js
+	 * Basic Font inheritance based on the model created in Backbone.js
 	 */
 	inherits: function(extensions) {
 		var me = this;
