@@ -6,8 +6,10 @@ const Router = require("koa-router");
 const superagent = require("superagent");
 const cheerio = require("cheerio");
 const bodyparser = require("koa-bodyparser");
+const cros = require('koa2-cors')
 let router = new Router();
 app.use(bodyparser());
+app.use(cros())
 let options = {
     hastname: "www.baidu.com",
     port: "80",
@@ -77,38 +79,11 @@ router.post("/weather", async ctx => {
     ctx.status = 200;
     ctx.set("Content-type", "text/plain;charset=utf-8");
     if (ctx.req.method === "POST") {
-        // ctx.req.addListener("data", chunk => {
-        //   data += chunk;
-        // });
-        // let a = ctx.req.addListener("end", () => {
-        //   let parseData = querystring.parse(data);
-        //   result = parseData;
-        //   let Allcity = fs.readFileSync("./city.json").toString();
-        //   let AllcityChage = JSON.parse(Allcity);
-        //   console.log(Object.keys(parseData)[0]); //取到传递过来的城市名  JSON.Stringify是序列化 JSON.parse是反序列化
-        //   let city = Object.keys(parseData)[0];
-        //   console.log(city);
-        //   cityId = AllcityChage.reduce((item, e) => {
-        //     // console.log(e["中文名"] === city)
-        //     // console.log(typeof city)
-        //     // console.log(city)
-        //     if (e["中文名"] === city) {
-        //       console.log("找到匹配的城市");
-        //       item = e["adcode"];
-        //     }
-        //     return item;
-        //   }, "");
-        //   console.log(`我是end里面的数据`, cityId);
-        // });
-        // ctx.body = cityId;
         let data = ctx.request.body;
         let city = Object.keys(data)[0];
         let Allcity = fs.readFileSync("./city.json").toString();
         let AllcityChage = JSON.parse(Allcity);
         cityId = AllcityChage.reduce((item, e) => {
-            // console.log(e["中文名"] === city)
-            // console.log(typeof city)
-            // console.log(city)
             if (e["中文名"] === city) {
                 console.log("找到匹配的城市");
                 item = e["adcode"];
@@ -128,6 +103,7 @@ router.get('/test', async ctx => {
 })
 //知乎API可以返回多个文章页面
 //重写知乎api
+app.use(cros());
 router.get('/ccc', async ctx => {
     let url = "https://www.zhihu.com/api/v4//mweb-feed/content/list?category=tuijian&reload=false&utm_source=&count=8"
     let data = await superagent.get(url).set({
@@ -138,7 +114,7 @@ router.get('/ccc', async ctx => {
 })
 router.get("/zhihu", async ctx => {
     let params = {
-        session_token: "1d21a48fae24f574fa79e64d8893eb29", //1d21a48fae24f574fa79e64d8893eb29
+        session_token: "9d6f529d5cbcf2009cb823abd376c245",
         desktop: true,
         page_number: 5,
         limit: 10,
@@ -183,15 +159,12 @@ let getData = function (url) {
                 Connection: "keep-alive",
                 "User-Agent":
                     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
-                cookie:
-                    '_xsrf=jK29u4eQvBfhy7a8E84Tb9v8AoXFYu6i; _zap=9420a2ed-6673-4542-93a0-5b3cb3d7845d; d_c0="AKAjBCA56w2PTvkVrSO6XiGtCGwmoc7QjMs=|1531903857"; __gads=ID=9166dd567e309628:T=1546853213:S=ALNI_Mbdto8xi5qFbZAT79xY5dg-ze4xnA; __utmc=51854390; __utmv=51854390.100--|2=registration_date=20170904=1^3=entry_date=20170904=1; __utmz=51854390.1562828657.7.6.utmcsr=cn.bing.com|utmccn=(referral)|utmcmd=referral|utmcct=/; tst=r; l_n_c=1; l_cap_id="ODM3NjNkNzcyMDYwNDI5MDk3NDU5MmJiMjFhNGVhYTQ=|1570602205|efd74e90bee34399b8a2a0b2634c0ea631262f55"; r_cap_id="ODMyNGFiZWJmZDRjNDBkMDk0ZDViYzZhMzg3Yjk0ZTM=|1570602205|fdffccbacd82b69374c24b77e07c7222fe69bb4a"; cap_id="Nzg1NGZjZWMyZWZhNGQxZjk4OGNiZDEzNTFlMWRmMGM=|1570602205|aff072c242fa668dcfd66cbf2eac82e1c5aaa866"; n_c=1; capsion_ticket="2|1:0|10:1571707597|14:capsion_ticket|44:NDczNGU3MWRlNjJiNDU4MjlmMzk5N2E2OTRhZTcyYjM=|1be0762519c170b5595fd27d9fcf12ad044449af116e2bdc93892e3eca641f27"; z_c0="2|1:0|10:1571707697|4:z_c0|92:Mi4xdGRiY0JRQUFBQUFBb0NNRUlEbnJEU2NBQUFDRUFsVk5NZWpWWFFDYjFSeV9UanFPWDVOd2xtYjltR0pHVkNJSEN3|b1956e3e29ed4b5edbe56e7a2d351a51056feada15e0a7eb31adee42880de999"; q_c1=b2573ca1a2134ace9ffc7113516b6761|1571708014000|1571708014000; __utma=51854390.224633120.1537528699.1562828657.1571884028.9; tgw_l7_route=7bacb9af7224ed68945ce419f4dea76d; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1571901788,1571901850,1571902840,1571902869; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1571902869',
-                "content-type": "application/json"
+                cookie: 'zap=86ce5a7e-26f7-46bd-b239-543441728482; d_c0="AJCnARIfcQ-PTsHidnvn0Cfa2iwQ_jo02aY=|1558069484"; _xsrf=6UPnsVm9DSxJ27qvqDRD16Rsu7NM6aDq; q_c1=492035a0ce8d41e399a69ba9e22f64eb|1560786953000|1558069485000; __utma=51854390.1778878594.1560786957.1560786957.1560786957.1; __utmv=51854390.000--|3=entry_date=20190517=1; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1579088949,1579090537,1579325210,1579350729; _ga=GA1.2.1778878594.1560786957; _gid=GA1.2.325792589.1582636322; _gat_gtag_UA_149949619_1=1; capsion_ticket="2|1:0|10:1582799760|14:capsion_ticket|44:ZTU2NzZiOGVlYWEwNGM5YWJiMTFjMDY0MTZlMjk0YTg=|6dd35af6aade61abf76d31b67e48f8bffeaf3447dfd37b9afe3664028282650d"; z_c0="2|1:0|10:1582799791|4:z_c0|92:Mi4xdGRiY0JRQUFBQUFBa0tjQkVoOXhEeWNBQUFDRUFsVk5yaWhfWGdCdlZ6N1BZUVdTNkRZTUZPVWpzWi1PRUJkNTRB|3f0a4219f9c9f9656f9d63a128896f5132d6776dd8e213f7995715282c3a76ea"; tst=r; KLBRSID=0a401b23e8a71b70de2f4b37f5b4e379|1582799796|1582799759'
             })
             .end((err, res) => {
                 if (err) {
                     console.log("请求出错了");
                 } else {
-                    //   console.log(res.text);
                     if (typeof res.text !== "undefined") {
                         let result = JSON.parse(res.text);
                         let dataArray = result.data;
@@ -224,7 +197,6 @@ let accessAllHtml = async function (arr) {
         //搜索热点/search/top_search/tabs/hot/items
 
         let url = `https://www.zhihu.com/question/`; //id加上id拼接url
-        // console.log(typeof arr)
         let resultFinall = [];
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr[i].length; j++) {
@@ -238,25 +210,6 @@ let accessAllHtml = async function (arr) {
                 });
                 let htmlResult = await AnalysisHtml(res.text);
                 resultFinall.push(htmlResult);
-                // if(resultFinall.indexOf(htmlResult)){
-
-                // }else{
-                //   resultFinall.push(htmlResult)
-                // }
-                // .then(async (err, res) => {
-                //   if (err) {
-                //     console.log(err);
-                //   }
-                //   else {
-                //     AnalysisHtml(res.text).then(res => {
-                //       //  console.log(res)
-                //       resultFinall.push(res);
-                //     });
-                //   }
-                //   // console.log('我是fiall',resultFinall)
-                //   // resolve(resultFinall)
-                // })
-                // console.log(`html`,htmlResult)
             }
             resolve(resultFinall);
         }
@@ -275,11 +228,13 @@ let AnalysisHtml = async function (html) {
         //superagent请求返回后的文章内容是一个对象.它的data对象是html文本
         //这里的html必须是html格式
         let $ = cheerio.load(html);
+        console.log('html', html);
         //每一个回答的问题，每一个回答就是一个.list-item
         //作者信息
         //解析对象格式，提取其中的内容
-        //attr获取不到data中的数据
-        let authorItem = $(".ContentItem")[0].attribs;
+        //获取不到data中的数据
+        console.log($(".ContentItem").prevObject['0']);
+        let authorItem = $(".ContentItem")['_root']['0'].attribs;
         let questionAnswer = $(".List-item").text();
         //回答主体
         let questionTitle = $(".QuestionHeader-title").text();
